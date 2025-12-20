@@ -6,7 +6,7 @@
 /*   By: aamroun <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/12 21:36:52 by aamroun           #+#    #+#             */
-/*   Updated: 2025/12/17 23:20:18 by aamroun          ###   ########.fr       */
+/*   Updated: 2025/12/20 15:26:53 by aamroun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ char	*ft_strjoin(const char *s1, const char *s2)
 	i = (j = -1);
 	if (!s1)
 	{
-		s1 = ft_strdup(s1);
+		s1 = ft_strdup("");
 		if (!s1)
 			return (NULL);
 	}
@@ -71,7 +71,6 @@ char	*ft_strjoin(const char *s1, const char *s2)
 	dest[i + j] = '\0';
 	return (free((char *)s1), dest);
 }
-
 
 char	*ft_substr(const char *s, unsigned int start, size_t len)
 {
