@@ -6,7 +6,7 @@
 /*   By: aamroun <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/20 20:59:40 by aamroun           #+#    #+#             */
-/*   Updated: 2025/12/20 20:59:48 by aamroun          ###   ########.fr       */
+/*   Updated: 2025/12/22 00:18:00 by aamroun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,6 @@ char	*ft_substr(const char *s, unsigned int start, size_t len);
 char	*ft_getlinebro(char *stash);
 char	*ft_solvethatbro(char *stash);
 char	*get_next_line(int fd);
+char	*ft_readingbro(int fd, char *stash);
 
 #endif

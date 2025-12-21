@@ -6,7 +6,7 @@
 /*   By: aamroun <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 16:41:52 by aamroun           #+#    #+#             */
-/*   Updated: 2025/12/20 17:22:39 by aamroun          ###   ########.fr       */
+/*   Updated: 2025/12/22 00:21:25 by aamroun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,33 +42,45 @@ char	*ft_solvethatbro(char *stash)
 	tmp = ft_substr(stash, i, ft_strlen(stash) - i);
 	free(stash);
 	return (tmp);
+		}
+
+char	*ft_readingbro(int fd, char *stash)
+{
+	char	*buffer;
+	ssize_t	bytes_read;
+
+	buffer = malloc((BUFFER_SIZE + 1) * sizeof(char));
+	if (!buffer)
+		return (free(stash), NULL);
+	bytes_read = 1;
+	while (bytes_read > 0)
+	{
+		bytes_read = read(fd, buffer, BUFFER_SIZE);
+		if (bytes_read < 0)
+			return (free(buffer), free(stash), stash = NULL, NULL);
+		buffer[bytes_read] = '\0';
+		stash = ft_strjoin(stash, buffer);
+		if (stash && ft_strchr(stash, '\n'))
+			break;
+	}
+	free(buffer);
+	return (stash);
 }
 
 char	*get_next_line(int fd)
 {
 	static char	*stash;
-	char		*buffer;
-	ssize_t		bytes_read;
 	char		*line;
 
 	line = NULL;
-	bytes_read = 1;
 	if ((fd < 0) || (BUFFER_SIZE <= 0))
 		return (NULL);
-	buffer = malloc((BUFFER_SIZE + 1) * sizeof(char));
-	if (!buffer)
+	stash = ft_readingbro(fd, stash);
+	if (!stash)
 		return (NULL);
-	while (bytes_read > 0)
-	{
-		bytes_read = read(fd, buffer, BUFFER_SIZE);
-		if (bytes_read < 0)
-			return (free(stash), free(buffer), stash = NULL, NULL);
-		buffer[bytes_read] = '\0';
-		stash = ft_strjoin(stash, buffer);
-		if (stash && ft_strchr(stash, '\n'))
-			break ;
-	}
-	if (stash)
-		(1 && (line = ft_getlinebro(stash)), (stash = ft_solvethatbro(stash)));
-	return (free(buffer), line);
+	line = ft_getlinebro(stash);
+	stash = ft_solvethatbro(stash);
+	if (!line && stash)
+		return (free(stash), stash = NULL, NULL);
+	return (line);
 }
