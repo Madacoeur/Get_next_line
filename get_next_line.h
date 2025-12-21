@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aamroun <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/20 20:59:40 by aamroun           #+#    #+#             */
-/*   Updated: 2025/12/20 20:59:48 by aamroun          ###   ########.fr       */
+/*   Created: 2025/12/20 20:59:59 by aamroun           #+#    #+#             */
+/*   Updated: 2025/12/20 21:00:02 by aamroun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_BONUS_H
-# define GET_NEXT_LINE_BONUS_H
-
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 10
 # endif
-
-# define MAX_FD 1024
 
 # include <stdlib.h>
 # include <unistd.h>

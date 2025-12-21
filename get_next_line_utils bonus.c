@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 size_t	ft_strlen(const char *str)
 {
@@ -113,17 +113,3 @@ char	*ft_strchr(const char *s, int c)
 		return ((char *)&s[i]);
 	return (NULL);
 }
-
-/*
-#include <stdio.h>
-
-int	main(void)
-{
-	char	*str1;
-	char	*str2;
-
-	str1 = "bonjour je";
-	str2 = "suis Adam blabla";
-	printf("%s", ft_strjoin(str1, str2));
-	return (0);
-}*/

@@ -11,8 +11,6 @@
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <stdio.h>
-#include <fcntl.h>
 
 char	*ft_getlinebro(char *stash)
 {
@@ -29,9 +27,10 @@ char	*ft_getlinebro(char *stash)
 	tmp = ft_substr(stash, 0, i);
 	return (tmp);
 }
+
 char	*ft_solvethatbro(char *stash)
 {
-	int	i;
+	int		i;
 	char	*tmp;
 
 	i = 0;
@@ -42,15 +41,15 @@ char	*ft_solvethatbro(char *stash)
 	i++;
 	tmp = ft_substr(stash, i, ft_strlen(stash) - i);
 	free(stash);
-	return (tmp); // donc la on a fait le cas ou /n est atteint et on remet la stash au point de depart(avec les characteres apres le \n) pour qu elle s en rappelle et on free le buffer.
+	return (tmp);
 }
 
-char *get_next_line(int fd)
+char	*get_next_line(int fd)
 {
 	static char	*stash;
-	char	*buffer;
-	ssize_t	bytes_read;
-	char	*line;
+	char		*buffer;
+	ssize_t		bytes_read;
+	char		*line;
 
 	line = NULL;
 	bytes_read = 1;
@@ -63,32 +62,13 @@ char *get_next_line(int fd)
 	{
 		bytes_read = read(fd, buffer, BUFFER_SIZE);
 		if (bytes_read < 0)
-		{
-			free(stash);
-			stash = NULL;
-			return (free(buffer), NULL);
-		}
+			return (free(stash), free(buffer), stash = NULL, NULL);
 		buffer[bytes_read] = '\0';
 		stash = ft_strjoin(stash, buffer);
-		if (ft_strchr(stash, '\n'))
-			break;
+		if (stash && ft_strchr(stash, '\n'))
+			break ;
 	}
 	if (stash)
-	{
-		line = ft_getlinebro(stash);
-		stash = ft_solvethatbro(stash);
-	}
+		(1 && (line = ft_getlinebro(stash)), (stash = ft_solvethatbro(stash)));
 	return (free(buffer), line);
-}
-
-
-int main(void)
-{
-	int fd;
-	char	*line;
-
-	fd = open("file.txt", O_RDONLY);
-	while ((line = get_next_line(fd)))
-	printf("%s", line);
-	return (0);
 }
