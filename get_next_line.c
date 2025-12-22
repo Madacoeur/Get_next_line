@@ -6,7 +6,7 @@
 /*   By: aamroun <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 16:41:52 by aamroun           #+#    #+#             */
-/*   Updated: 2025/12/22 00:21:25 by aamroun          ###   ########.fr       */
+/*   Updated: 2025/12/22 16:10:34 by aamroun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ char	*ft_solvethatbro(char *stash)
 	tmp = ft_substr(stash, i, ft_strlen(stash) - i);
 	free(stash);
 	return (tmp);
-		}
+}
 
 char	*ft_readingbro(int fd, char *stash)
 {
@@ -61,7 +61,7 @@ char	*ft_readingbro(int fd, char *stash)
 		buffer[bytes_read] = '\0';
 		stash = ft_strjoin(stash, buffer);
 		if (stash && ft_strchr(stash, '\n'))
-			break;
+			break ;
 	}
 	free(buffer);
 	return (stash);
